@@ -16,8 +16,3 @@ func NewHealthHandler() *HealthHandler {
 func (h *HealthHandler) Health(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "OK"})
 }
-
-func (h *HealthHandler) HealthWithName(c *gin.Context) {
-	name := c.Param("name")
-	c.JSON(http.StatusOK, gin.H{"message": "OK", "name": name})
-}

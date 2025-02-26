@@ -9,5 +9,4 @@ import (
 func HealthRouter(r *gin.RouterGroup) {
 	healthHandler := handlers.NewHealthHandler()
 	r.GET("/", healthHandler.Health)
-	r.GET("/:name", healthHandler.HealthWithName)
 }
