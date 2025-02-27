@@ -53,11 +53,11 @@ type Config struct {
 
 func getConfigPath(env string) string {
 	if env == "docker" {
-		return "../config/config-docker.yml"
+		return "./src/config/config-docker.yml"
 	} else if env == "production" {
-		return "../config/config-production.yml"
+		return "./src/config/config-production.yml"
 	}
-	return "../config/config-development.yml"
+	return "./src/config/config-development.yml"
 }
 
 func LoadConfig(fileName string, fileType string) (*viper.Viper, error) {

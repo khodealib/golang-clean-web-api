@@ -10,12 +10,12 @@ import (
 )
 
 func InitServer() {
-	config := config.GetConfig()
+	cfg := config.GetConfig()
 
-	if config.Server.RunMode != "" && (config.Server.RunMode == "debug" || config.Server.RunMode == "release") {
-		gin.SetMode(config.Server.RunMode)
+	if cfg.Server.RunMode != "" && (cfg.Server.RunMode == "debug" || cfg.Server.RunMode == "release") {
+		gin.SetMode(cfg.Server.RunMode)
 	} else {
-		panic(fmt.Sprintf("Invalid run mode: %s", config.Server.RunMode))
+		panic(fmt.Sprintf("Invalid run mode: %s", cfg.Server.RunMode))
 	}
 
 	r := gin.New()
@@ -28,7 +28,7 @@ func InitServer() {
 		routers.HealthRouter(health)
 	}
 
-	err := r.Run(fmt.Sprintf("%s:%s", config.Server.Host, config.Server.Port))
+	err := r.Run(fmt.Sprintf("%s:%s", cfg.Server.Host, cfg.Server.Port))
 	if err != nil {
 		panic(err)
 	}
