@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/khodealib/golang-clean-web-api/src/api/routers"
+	"github.com/khodealib/golang-clean-web-api/src/api/validations"
 	"github.com/khodealib/golang-clean-web-api/src/config"
 )
 
@@ -17,6 +18,8 @@ func InitServer() {
 	} else {
 		panic(fmt.Sprintf("Invalid run mode: %s", cfg.Server.RunMode))
 	}
+
+	validations.RegisterCustomValidations()
 
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery())
