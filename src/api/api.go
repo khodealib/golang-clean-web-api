@@ -11,11 +11,9 @@ import (
 
 func InitServer() {
 	config := config.GetConfig()
-	fmt.Printf("Config %+v\n", config)
-	if config.Server.RunMode == "debug" {
-		gin.SetMode(gin.DebugMode)
-	} else if config.Server.RunMode == "release" {
-		gin.SetMode(gin.ReleaseMode)
+
+	if config.Server.RunMode != "" && (config.Server.RunMode == "debug" || config.Server.RunMode == "release") {
+		gin.SetMode(config.Server.RunMode)
 	} else {
 		panic(fmt.Sprintf("Invalid run mode: %s", config.Server.RunMode))
 	}
