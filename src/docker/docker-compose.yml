@@ -32,7 +32,7 @@ services:
   redis:
     image: redis:latest
     container_name: redis_container
-    command: ["redis-server", "/etc/redis/redis.conf"]
+    command: [ "redis-server", "/etc/redis/redis.conf" ]
     volumes:
       - ./redis/redis.conf:/etc/redis/redis.conf
       - redis:/data
@@ -41,12 +41,13 @@ services:
     networks:
       - webapi_network
     restart: unless-stopped
-      
+
 volumes:
   postgres:
   pgadmin:
   redis:
   logs:
+
 
 networks:
   webapi_network:
